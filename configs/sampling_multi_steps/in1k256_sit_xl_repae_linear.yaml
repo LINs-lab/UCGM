@@ -1,0 +1,38 @@
+output_dir: './outputs'
+
+data:
+  data_path: './buffers/data/e2evavae_f16d32/train_256'
+  fid_reference_file: './buffers/refs/in1k256_fid_ref.npz'
+  image_size: 256
+  num_classes: 1000
+  num_workers: 8
+  latent_norm: True
+  latent_multiplier: 1.0
+
+vae:
+  type: 'e2evavae_f16d32'
+  downsample_ratio: 16
+
+model:
+  type: SiT-XL/1
+  in_chans: 32
+
+train:
+  global_seed: 0
+
+transport:
+  type: Linear
+
+sample:
+  ckpt: "0000000.pt"
+  type: UNI
+  cfg_scale: 2.5
+  cfg_interval: [0.00, 0.76]
+  sampling_steps: 40
+  stochast_ratio: 0.0
+  extrapol_ratio: 0.54
+  sampling_order: 1
+  time_dist_ctrl: [1.2, 0.72, 1.2]
+  rfba_gap_steps: [0.001, 0.002]
+  per_batch_size: 125
+  fid_sample_num: 50000

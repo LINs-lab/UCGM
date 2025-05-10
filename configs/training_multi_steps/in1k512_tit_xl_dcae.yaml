@@ -1,0 +1,63 @@
+output_dir: './outputs'
+
+data:
+  data_path: './buffers/data/dcae_f32c32/train_512'
+  fid_reference_file: './buffers/refs/in1k512_fid_ref.npz'
+  image_size: 512
+  num_classes: 1000
+  num_workers: 8
+  latent_norm: True
+  latent_multiplier: 1.0
+
+vae:
+  type: 'dcae_f32c32'
+  downsample_ratio: 32
+
+model:
+  type: TiT-XL/1
+  in_chans: 32
+
+train:
+  # ckpt: "0000000.pt" # <---- resume ckpt, comment to start from scratch
+  no_reopt: False
+  no_reuni: False
+  no_buffer: False
+  max_steps: 1000000
+  global_batch_size: 1024
+  global_seed: 0
+  log_every: 100
+  ckpt_every: 20000
+  ema_decay: 0.9999
+
+optimizer:
+  type: 'AdamW'
+  lr: 0.0002
+  weight_decay: 0.0
+  beta1: 0.9
+  beta2: 0.95
+
+transport:
+  type: Linear
+  lab_drop_ratio: 0.1
+  consistc_ratio: 0.0
+  enhanced_ratio: 0.57
+  scaled_cbl_eps: 0.0
+  ema_decay_rate: 0.999
+  enhanced_range: [0.0, 0.75]
+  time_dist_ctrl: [1.0, 1.0, 1.00]
+  weight_funcion: Cosine
+  wt_cosine_loss: True
+
+sample:
+  ckpt: "1000000.pt"
+  type: UNI
+  cfg_scale: 0.0
+  cfg_interval: [0.00, 0.75]
+  sampling_steps: 40
+  stochast_ratio: 0.0
+  extrapol_ratio: 0.46
+  sampling_order: 1
+  time_dist_ctrl: [1.17, 0.8, 1.1]
+  rfba_gap_steps: [0.001, 0.001]
+  per_batch_size: 125
+  fid_sample_num: 50000

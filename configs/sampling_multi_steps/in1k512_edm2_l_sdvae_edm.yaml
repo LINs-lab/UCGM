@@ -1,0 +1,38 @@
+output_dir: './outputs'
+
+data:
+  data_path: './buffers/data/edm2_sdvae_f8c4/train_512'
+  fid_reference_file: './buffers/refs/in1k512_fid_ref.npz'
+  image_size: 512
+  num_classes: 1000
+  num_workers: 8
+  latent_norm: True
+  latent_multiplier: 1.0
+
+vae:
+  type: 'edm2_sdvae_f8c4'
+  downsample_ratio: 8
+
+model:
+  type: EDM2-L
+  in_chans: 4
+
+train:
+  global_seed: 0
+
+transport:
+  type: EDM
+
+sample:
+  ckpt: "0000000.pt"
+  type: UNI
+  cfg_scale: 0.0
+  cfg_interval: [0.00, 0.75]
+  sampling_steps: 50
+  stochast_ratio: 0.0
+  extrapol_ratio: 0.43
+  sampling_order: 1
+  time_dist_ctrl: [1.17, 0.8, 1.1]
+  rfba_gap_steps: [0.001, 0.001]
+  per_batch_size: 25
+  fid_sample_num: 50000
