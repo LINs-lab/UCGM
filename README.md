@@ -2,7 +2,7 @@
 # UCGM: Unified Continuous Generative Models 
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![arXiv](https://img.shields.io/badge/arXiv-XXXX.XXXXX-b31b1b.svg)](https://arxiv.org/abs/XXXX.XXXXX)
+[![arXiv](https://img.shields.io/badge/arXiv-Click.Me-b31b1b.svg)](./assets/paper.pdf)
 [![Python 3.8+](https://img.shields.io/badge/python-3.10.0-blue.svg)](https://www.python.org/downloads/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.5.0-red.svg)](https://pytorch.org/)
 
