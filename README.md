@@ -1,10 +1,23 @@
 
-# UCGM: Unified Continuous Generative Models 
+<h1 align="center"> UCGM: Unified Continuous Generative Models </h1>
 
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![arXiv](https://img.shields.io/badge/arXiv-Click.Me-b31b1b.svg)](./assets/paper.pdf)
-[![Python 3.8+](https://img.shields.io/badge/python-3.10.0-blue.svg)](https://www.python.org/downloads/)
-[![PyTorch](https://img.shields.io/badge/PyTorch-2.5.0-red.svg)](https://pytorch.org/)
+<p align="center">
+  Peng&nbsp;Sun<sup>1,2</sup> &ensp; <b>&middot;</b> &ensp;
+  Yi&nbsp;Jiang<sup>2</sup> &ensp; <b>&middot;</b> &ensp;
+  <a href="https://tlin-taolin.github.io/" target="_blank">Tao&nbsp;Lin</a><sup>1</sup> &ensp; &ensp;
+</p>
+
+<p align="center">
+  <sup>1</sup>Westlake University &emsp; <sup>2</sup>Zhejiang University&emsp; <br>
+</p>
+
+<p align="center">
+<a href="https://huggingface.co/sp12138sp/UCGM">:robot: Models</a> &ensp;
+<a href="https://arxiv.org/abs/2505.07447">:page_facing_up: Paper</a> &ensp;
+<a href="#label-bibliography">:label: BibTeX</a> &ensp;
+  <br><br>
+<a href="https://paperswithcode.com/sota/image-generation-on-imagenet-256x256?p=unified-continuous-generative-models"><img src="https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/unified-continuous-generative-models/image-generation-on-imagenet-256x256" alt="PWC"></a> <a href="https://paperswithcode.com/sota/image-generation-on-imagenet-512x512?p=unified-continuous-generative-models"><img src="https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/unified-continuous-generative-models/image-generation-on-imagenet-512x512" alt="PWC"></a>
+</p>
 
 Official PyTorch implementation of **UCGM**: A unified framework for training, sampling, and understanding continuous generative models (diffusion, flow-matching, consistency models).
 
@@ -28,7 +41,7 @@ Official PyTorch implementation of **UCGM**: A unified framework for training, s
 - :zap: **Few-Step Mastery**: Just **2 steps**? Still strong (**1.42 FID on 256×256, 1.75 FID on 512×512**)  
 - :no_entry_sign: **Guidance-Free**: No classifier-free guidance for UCGM-T-trained models, **simpler and faster**  
 - :building_construction: **Architecture & Dataset Flexibility**: Compatible with diverse datasets (ImageNet, CIFAR, etc.) and VAEs/neural architectures (CNNs, Transformers)  
-- :book: Check more features in our [paper](./assets/paper.pdf)!
+- :book: Check more features in our [paper](https://arxiv.org/abs/2505.07447)!
 
 ## :wrench: Preparation
 
@@ -101,6 +114,24 @@ bash scripts/run_train.sh ./configs/training_few_steps/in1k512_tit_xl_dcae.yaml
      "ema": multi_step_ckpt["ema"]
    }
    ```
+
+
+## :label: Bibliography
+
+If you find this repository helpful for your project, please consider citing our work:
+
+```
+@article{sun2025unified,
+  title = {Unified continuous generative models},
+  author = {Sun, Peng and Jiang, Yi and Lin, Tao},
+  journal = {arXiv preprint arXiv:2505.07447},
+  year = {2025},
+  url = {https://arxiv.org/abs/2505.07447},
+  archiveprefix = {arXiv},
+  eprint = {2505.07447},
+  primaryclass = {cs.LG}
+}
+```
 
 
 ## :page_facing_up: License
