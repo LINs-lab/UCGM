@@ -1,0 +1,47 @@
+output_dir: './outputs'
+
+data:
+  data_path: './buffers/data/sdvae_f8c4/train_256'
+  fid_reference_file: './buffers/refs/in1k256_fid_ref.npz'
+  image_size: 256
+  num_classes: 1000
+  num_workers: 8
+  latent_norm: False
+  latent_multiplier: 0.18215
+
+vae:
+  type: 'sdvae_ema_f8c4'
+  downsample_ratio: 8
+
+model:
+  type: DDT-XL/2
+  in_chans: 4
+
+train:
+  ckpt: "0000000.pt" # <---- a model trined using "DDT" (https://github.com/MCG-NJU/DDT)
+  no_reopt: True
+  no_reuni: True
+  no_buffer: False
+  max_steps: 800
+  global_batch_size: 512
+  global_seed: 0
+  log_every: 100
+  ckpt_every: 800
+  ema_decay: 0.99
+
+transport:
+  type: ReLinear
+
+sample:
+  ckpt: "0000800.pt"
+  type: UNI
+  cfg_scale: 0.0
+  cfg_interval: [0.00, 0.75]
+  sampling_steps: 2
+  stochast_ratio: 1.0
+  extrapol_ratio: 0.0
+  sampling_order: 1
+  time_dist_ctrl: [1.0, 1.0, 1.0]
+  rfba_gap_steps: [0.001, 0.50]
+  per_batch_size: 125
+  fid_sample_num: 50000

@@ -21,6 +21,20 @@
 
 Official PyTorch implementation of **UCGM**: A unified framework for training, sampling, and understanding continuous generative models (diffusion, flow-matching, consistency models).
 
+
+## :fire: News
+
+**:calendar: \[2025/5/23\]** :rocket: **Ultra-Fast Model Tuning Achieved!**  
+- :sparkles: UCGM introduces **lightning-fast model adaptation**—transforming any pre-trained diffusion model (e.g., REPA-E with FID=1.54 at NFE=80) into a **high-performance, few-step generator** with **record efficiency**:  
+  :white_check_mark: **Steps=NFE=2, FID=1.39** (ImageNet-1K 256×256)  
+  :white_check_mark: **Tuned in only 8 minutes on just 8 GPUs** 
+
+- :bar_chart: **Extended results** for additional tuned diffusion models are available [here](#zap-ucgm-t-ultra-efficient-tuning-system).  
+
+- :soon: **Stay tuned!** The tuning code will **be released soon**.  
+
+
+
 ## :trophy: Key Results
 
 <div align="center">
@@ -76,6 +90,30 @@ Accelerate any continuous generative model (diffusion, flow-matching, etc.) with
 ```bash
 bash scripts/run_eval.sh ./configs/sampling_multi_steps/in1k256_sit_xl_repae_linear.yaml
 ```
+
+## :zap: UCGM-T: Ultra-Efficient Tuning System
+
+UCGM-T revolutionizes multi-step generative models (including diffusion and flow matching models) by enabling ultra-efficient conversion to high-performance few-step versions. Results marked with :zap: indicate UCGM-T-tuned models.
+
+| Pre-trained Model                                       | Model Size | Dataset  | Resolution | Tuning Efficiency  | NFE (⚡) | FID (⚡) | Tuned Model                                             |
+| ------------------------------------------------------- | ---------- | -------- | ---------- | -------------------- | ------- | ------- | ------------------------------------------------------- |
+| [Lightning-DiT](https://github.com/hustvl/LightningDiT) | 675M       | ImageNet | 256×256    | 0.64 epoch (10 mins) | 2       | 2.06    | [Link](https://huggingface.co/sp12138sp/UCGM/tree/main) |
+| [REPA](https://github.com/sihyun-yu/REPA)               | 675M       | ImageNet | 256×256    | 0.64 epoch (13 mins) | 2       | 1.95    | [Link](https://huggingface.co/sp12138sp/UCGM/tree/main) |
+| [REPA-E](https://github.com/End2End-Diffusion/REPA-E)   | 675M       | ImageNet | 256×256    | 0.40 epoch (8 mins)  | 2       | 1.39    | [Link](https://huggingface.co/sp12138sp/UCGM/tree/main) |
+| [DDT](https://github.com/MCG-NJU/DDT)                   | 675M       | ImageNet | 256×256    | 0.32 epoch (11 mins) | 2       | 1.90    | [Link](https://huggingface.co/sp12138sp/UCGM/tree/main) |
+
+(Please note that the tuning time mentioned above is based on evaluation using 8 H800 GPUs)
+
+**:computer: Usage Examples**
+
+Generate Images:
+```bash
+# Generate samples using our tuned few-step model
+bash scripts/run_eval.sh ./configs/tuning_few_steps/in1k256_sit_xl_repae_linear.yaml
+```
+
+
+
 
 ## :gear: UCGM-T: Unified Training Framework
 
